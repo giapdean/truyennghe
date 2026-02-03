@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Automation Master - Truyền Nghề Thực Chiến</title>
+    <meta name="description" content="Khóa học AI Automation Master - Đào tạo Digital Human, chuyển đổi số doanh nghiệp thực chiến. Không cần Code.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Montserrat', 'sans-serif'] },
+                    colors: {
+                        brandDark: '#050505',
+                        brandCard: '#121212',
+                        brandRed: '#DC2626', 
+                        brandOrange: '#EA580C',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #DC2626; }
+        .text-gradient { background: linear-gradient(to right, #F87171, #DC2626, #B91C1C); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .blob { position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(220,38,38,0.2) 0%, rgba(0,0,0,0) 70%); filter: blur(80px); border-radius: 50%; z-index: -1; }
+        .btn-glow { position: relative; overflow: hidden; }
+        .btn-glow::after { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent); transform: rotate(45deg); animation: shine 3s infinite; }
+        @keyframes shine { 0% { transform: translateX(-100%) rotate(45deg); } 100% { transform: translateX(100%) rotate(45deg); } }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] summary ~ * { animation: sweep .3s ease-in-out; }
+        @keyframes sweep { 0% {opacity: 0; transform: translateY(-10px)} 100% {opacity: 1; transform: translateY(0)} }
+        .timeline-line { position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; background: linear-gradient(to bottom, #DC2626, #EA580C, #9333EA); transform: translateX(-50%); border-radius: 99px; }
+        @media (max-width: 768px) { .timeline-line { left: 20px; } }
+    </style>
+</head>
+<body class="bg-brandDark text-slate-200 overflow-x-hidden selection:bg-brandRed selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 start-0 border-b border-white/10 bg-brandDark/90 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="#" class="flex items-center space-x-1 group">
+                    <div class="w-8 h-8 bg-brandRed rounded flex items-center justify-center text-white font-bold text-xl mr-2 group-hover:bg-red-500 transition">AI</div>
+                    <span class="self-center text-2xl font-black whitespace-nowrap text-white tracking-tighter">MASTER<span class="text-brandRed">.</span></span>
+                </a>
+                <div class="flex md:order-2 space-x-3">
+                    <a href="#register" class="btn-glow text-white bg-brandRed hover:bg-red-700 font-bold rounded-lg text-sm px-6 py-3 shadow-[0_0_20px_rgba(220,38,38,0.4)] transition-all uppercase tracking-wide">
+                        Đăng Ký Học
+                    </a>
+                </div>
+                <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1">
+                    <ul class="flex flex-col p-4 md:p-0 mt-4 font-bold md:space-x-8 md:flex-row md:mt-0">
+                        <li><a href="#method" class="block py-2 px-3 text-gray-400 hover:text-white hover:text-brandRed transition uppercase text-xs tracking-wider">Phương Pháp</a></li>
+                        <li><a href="#roadmap" class="block py-2 px-3 text-gray-400 hover:text-white hover:text-brandRed transition uppercase text-xs tracking-wider">Lộ Trình</a></li>
+                        <li><a href="#case-study" class="block py-2 px-3 text-gray-400 hover:text-white hover:text-brandRed transition uppercase text-xs tracking-wider">Case Study</a></li>
+                        <li><a href="#pricing" class="block py-2 px-3 text-gray-400 hover:text-white hover:text-brandRed transition uppercase text-xs tracking-wider">Học Phí</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-12 px-4 overflow-hidden">
+        <div class="blob top-0 left-0"></div>
+        <div class="blob bottom-0 right-0 bg-orange-900/20"></div>
+        <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 z-0"></div>
+
+        <div class="max-w-7xl mx-auto text-center z-10 relative">
+            <div class="inline-block py-2 px-4 rounded-full bg-white/5 border border-white/10 text-brandRed text-xs font-bold mb-8 uppercase tracking-widest animate-pulse-slow">
+                <i class="fa-solid fa-microchip mr-2"></i> Chương Trình Truyền Nghề
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight tracking-tight" data-aos="fade-up">
+                AI AUTOMATION <br>
+                <span class="text-gradient">MASTER CLASS</span>
+            </h1>
+
+            <p class="text-xl md:text-2xl text-white font-bold mb-8" data-aos="fade-up" data-aos-delay="100">
+                ĐÀO TẠO "DIGITAL HUMAN" - CHUYỂN ĐỔI SỐ DOANH NGHIỆP THỰC CHIẾN
+            </p>
+
+            <div class="max-w-3xl mx-auto mb-10 text-left md:text-center space-y-3" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-gray-400 font-medium text-sm md:text-base leading-relaxed">
+                    Không dạy lập trình hàn lâm. Tôi trao cho bạn bộ "Vũ khí" Template & Quy trình để:
+                </p>
+                <ul class="text-gray-300 text-sm md:text-base space-y-2 inline-block text-left">
+                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Marketer, Trợ lý GĐ tự build tool Content/Funnel <strong>không cần Dev</strong>.</li>
+                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Chủ doanh nghiệp tự động hóa CRM/HR/Tài chính <strong>không tốn phí phần mềm</strong>.</li>
+                    <li class="flex items-start"><i class="fa-solid fa-check text-green-500 mt-1 mr-2"></i> Học 1 lần dùng cả đời. Không cần học thêm khóa thứ 2.</li>
+                    <li class="flex items-start"><i class="fa-solid fa-check text-brandRed mt-1 mr-2"></i> <strong>90% Khóa là Thực Hành</strong> - Copy & Paste là chạy.</li>
+                </ul>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-5" data-aos="fade-up" data-aos-delay="300">
+                <a href="#roadmap" class="px-10 py-4 bg-white text-brandDark font-extrabold rounded-full hover:bg-gray-200 transition transform hover:-translate-y-1 shadow-lg uppercase tracking-wide">
+                    Xem Lộ Trình
+                </a>
+                <a href="#register" class="px-10 py-4 border-2 border-brandRed text-brandRed font-bold rounded-full hover:bg-brandRed hover:text-white transition uppercase tracking-wide shadow-[0_0_20px_rgba(220,38,38,0.3)]">
+                    Đăng Ký Ngay
+                </a>
+            </div>
+            
+             <!-- Tools Icons -->
+             <div class="mt-12 flex flex-wrap justify-center gap-6 opacity-60 grayscale hover:grayscale-0 transition duration-500" data-aos="fade-up" data-aos-delay="400">
+                <span class="text-sm font-bold text-gray-500 uppercase tracking-widest border border-gray-800 px-3 py-1 rounded">Make/n8n</span>
+                <span class="text-sm font-bold text-gray-500 uppercase tracking-widest border border-gray-800 px-3 py-1 rounded">GG Apps Script</span>
+                <span class="text-sm font-bold text-gray-500 uppercase tracking-widest border border-gray-800 px-3 py-1 rounded">Gemini</span>
+                <span class="text-sm font-bold text-gray-500 uppercase tracking-widest border border-gray-800 px-3 py-1 rounded">AI Studio</span>
+           </div>
+        </div>
+    </section>
+
+    <!-- METHODOLOGY -->
+    <section id="method" class="py-24 bg-black relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-black mb-4 uppercase">Phương Pháp <span class="text-brandRed">Lego Mapping</span></h2>
+                <p class="text-gray-400">Tại sao người không biết Code vẫn làm chủ công nghệ?</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="bg-brandCard p-6 rounded-2xl border border-white/5 hover:border-brandRed transition group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center mb-6 group-hover:bg-brandRed transition">
+                        <i class="fa-solid fa-layer-group text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">1. Không Code Từ Đầu</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Cung cấp sẵn thư viện Template (Source code mẫu) cho Marketing, CRM, HR...</p>
+                </div>
+                <div class="bg-brandCard p-6 rounded-2xl border border-white/5 hover:border-brandRed transition group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center mb-6 group-hover:bg-brandOrange transition">
+                        <i class="fa-solid fa-puzzle-piece text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">2. Lắp Ghép & Tùy Biến</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Dùng AI (Prompt) để sửa lại Template cho khớp nhu cầu. Máy làm phần khó.</p>
+                </div>
+                <div class="bg-brandCard p-6 rounded-2xl border border-white/5 hover:border-brandRed transition group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center mb-6 group-hover:bg-green-600 transition">
+                        <i class="fa-solid fa-play text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">3. Kết Quả Ngay</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Copy -> Paste -> Run. Có ngay ứng dụng xịn sò trong 15 phút. Học qua dự án.</p>
+                </div>
+                <div class="bg-brandCard p-6 rounded-2xl border border-white/5 hover:border-brandRed transition group" data-aos="fade-up" data-aos-delay="400">
+                     <div class="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-600 transition">
+                        <i class="fa-solid fa-briefcase text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">4. Customize 1:1</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Support 1:1 giải quyết case study thực tế, riêng biệt của Doanh nghiệp bạn.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section id="roadmap" class="py-24 bg-[#0a0a0a] relative overflow-hidden">
+        <div class="blob right-0 top-1/2 opacity-10"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl md:text-5xl font-black text-center mb-4 text-white uppercase">Lộ Trình <span class="text-gradient">Chi Tiết</span></h2>
+                <p class="text-gray-400 text-sm mb-6"><i class="fa-solid fa-hand-pointer mr-2 animate-bounce"></i>Bấm vào từng tháng để xem chi tiết</p>
+            </div>
+
+            <!-- CHẶNG 1 -->
+            <div class="text-center mb-10">
+                 <span class="bg-brandRed text-white px-4 py-1 rounded text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(220,38,38,0.5)]">Chặng 1: Xây Dựng Bệ Phóng (Tháng 1-3)</span>
+                 <p class="text-gray-400 text-xs mt-3 uppercase tracking-wide">Mục tiêu: Tự động hóa Marketing, Sales & Dòng tiền</p>
+            </div>
+
+            <div class="relative">
+                <div class="timeline-line"></div>
+
+                <!-- THÁNG 1 -->
+                <div class="mb-8 flex justify-between items-start w-full right-timeline group" data-aos="fade-left">
+                    <div class="order-1 w-1/12 md:w-5/12 hidden md:block"></div>
+                    <div class="z-20 flex items-center order-1 bg-brandRed shadow-xl w-10 h-10 rounded-full border-4 border-[#0a0a0a] md:ml-0 ml-1 mt-6 transition-transform group-hover:scale-125"></div>
+                    <details class="order-1 bg-brandCard border border-white/10 rounded-xl shadow-xl w-full md:w-5/12 ml-6 md:ml-0 overflow-hidden cursor-pointer group-open:border-brandRed transition-all duration-300 hover:border-white/30">
+                        <summary class="flex justify-between items-center p-6 bg-white/5 hover:bg-white/10 transition">
+                            <div>
+                                <span class="text-brandRed text-xs font-bold uppercase tracking-wider mb-1 block">Tháng 1</span>
+                                <h3 class="font-bold text-white text-lg md:text-xl">Nền Tảng & Tư Duy</h3>
+                                <p class="text-gray-500 text-xs mt-1 italic">Khởi động tư duy "Ra lệnh cho máy làm việc"</p>
+                            </div>
+                            <span class="w-8 h-8 flex items-center justify-center rounded-full bg-black/50 border border-white/10 group-open:rotate-180 transition duration-300"><i class="fa-solid fa-chevron-down text-white"></i></span>
+                        </summary>
+                        <div class="p-6 border-t border-white/10 bg-black/40 text-sm text-gray-300 space-y-5">
+                            <div>
+                                <h4 class="text-white font-bold mb-2 flex items-center"><i class="fa-solid fa-brain text-brandRed mr-2"></i>Module 1: Prompt Engineering</h4>
+                                <ul class="list-disc pl-5 space-y-1 text-xs text-gray-400">
+                                    <li>Cách viết Prompt lên Plan MKT, Content, Code.</li>
+                                    <li>Tận dụng các AI: Perplexity, Gemini, ChatGPT...</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold mb-2 flex items-center"><i class="fa-solid fa-network-wired text-brandRed mr-2"></i>Module 2: Automation (API & Webhook)</h4>
+                                <ul class="list-disc pl-5 space-y-1 text-xs text-gray-400">
+                                    <li>Cánh cổng kết nối mọi App với nhau.</li>
+                                    <li>Kết nối API tạo app với GAS, Make/n8n, AI Studio.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold mb-2 flex items-center"><i class="fa-solid fa-screwdriver-wrench text-brandRed mr-2"></i>Module 3: Làm chủ công cụ (Toolset)</h4>
+                                <ul class="list-disc pl-5 space-y-1 text-xs text-gray-400">
+                                    <li><strong>Google Apps Script (GAS):</strong> Tự động hóa tài liệu, Web App, Landingpage, Báo cáo.</li>
+                                    <li><strong>Make/n8n:</strong> Xử lý quy trình phức tạp (Bot Zalo/Tele).</li>
+                                    <li><strong>AI Studio:</strong> Tạo App AI xử lý Content, Phân tích video.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-brandRed/10 p-3 rounded border-l-4 border-brandRed">
+                                <p class="text-xs text-white font-bold"><i class="fa-solid fa-fire mr-1"></i>PROJECT: Build App AI tự động lên kịch bản Video & Plan Content tuần với 1 Click.</p>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- THÁNG 2 -->
+                <div class="mb-8 flex justify-between flex-row-reverse items-start w-full left-timeline group" data-aos="fade-right">
+                    <div class="order-1 w-1/12 md:w-5/12 hidden md:block"></div>
+                    <div class="z-20 flex items-center order-1 bg-brandOrange shadow-xl w-10 h-10 rounded-full border-4 border-[#0a0a0a] md:mr-0 ml-1 mt-6 transition-transform group-hover:scale-125"></div>
+                    <details class="order-1 bg-brandCard border border-white/10 rounded-xl shadow-xl w-full md:w-5/12 ml-6 md:mr-0 overflow-hidden cursor-pointer group-open:border-brandOrange transition-all duration-300 hover:border-white/30">
+                        <summary class="flex justify-between items-center p-6 bg-white/5 hover:bg-white/10 transition">
+                            <div>
+                                <span class="text-brandOrange text-xs font-bold uppercase tracking-wider mb-1 block">Tháng 2</span>
+                                <h3 class="font-bold text-white text-lg md:text-xl">Phễu & Content Auto</h3>
+                                <p class="text-gray-500 text-xs mt-1 italic">Biến kiến thức thành cỗ máy kéo khách</p>
+                            </div>
+                            <span class="w-8 h-8 flex items-center justify-center rounded-full bg-black/50 border border-white/10 group-open:rotate-180 transition duration-300"><i class="fa-solid fa-chevron-down text-white"></i></span>
+                        </summary>
+                        <div class="p-6 border-t border-white/10 bg-black/40 text-sm text-gray-300 space-y-5">
+                            <div>
+                                <h4 class="text-white font-bold mb-2 flex items-center"><i class="fa-solid fa-filter text-brandOrange mr-2"></i>Module 1: Tư Duy Viral Marketing</h4>
+                                <ul class="list-disc pl-5 space-y-1 text-xs text-gray-400">
+                                    <li>Chiến lược tăng 30% Traffic & Lead/tháng.</li>
+                                    <li>Tư duy Phễu: Khách lạ -> Mua hàng -> Chăm sóc tự động.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold mb-2 flex items-center"><i class="fa-solid fa-robot text-brandOrange mr-2"></i>Module 2: Xây Dựng Funnel</h4>
+                                <ul class="list-disc pl-5 space-y-1 text-xs text-gray-400">
+                                    <li>Setup Landing Page, Cổng thanh toán, Database.</li>
+                                    <li>Automation Nurturing: Chuỗi Email & Zalo chăm sóc.</li>
+                                </ul>
+                            </div>
+                            <div class="bg-brandOrange/10 p-3 rounded border-l-4 border-brandOrange">
+                                <p class="text-xs text-white font-bold"><i class="fa-solid fa-fire mr-1"></i>PROJECT: Hệ thống "Viral Funnel" (Landing Page -> Thanh toán -> Chăm sóc -> Upsell).</p>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- THÁNG 3 -->
+                <div class="mb-8 flex justify-between items-start w-full right-timeline group" data-aos="fade-left">
+                    <div class="order-1 w-1/12 md:w-5/12 hidden md:block"></div>
+                    <div class="z-20 flex items-center order-1 bg-yellow-500 shadow-xl w-10 h-10 rounded-full border-4 border-[#0a0a0a] md:ml-0 ml-1 mt-6 transition-transform group-hover:scale-125"></div>
+                    <details class="order-1 bg-brandCard border border-white/10 rounded-xl shadow-xl w-full md:w-5/12 ml-6 md:ml-0 overflow-hidden cursor-pointer group-open:border-yellow-500 transition-all duration-300 hover:border-white/30">
+                        <summary class="flex justify-between items-center p-6 bg-white/5 hover:bg-white/10 transition">
+                            <div>
+                                <span class="text-yellow-500 text-xs font-bold uppercase tracking-wider mb-1 block">Tháng 3</span>
+                                <h3 class="font-bold text-white text-lg md:text-xl">Coaching Thực Chiến</h3>
+                                <p class="text-gray-500 text-xs mt-1 italic">Tốt nghiệp Chặng 1</p>
+                            </div>
+                            <span class="w-8 h-8 flex items-center justify-center rounded-full bg-black/50 border border-white/10 group-open:rotate-180 transition duration-300"><i class="fa-solid fa-chevron-down text-white"></i></span>
+                        </summary>
+                        <div class="p-6 border-t border-white/10 bg-black/40 text-sm text-gray-300 space-y-4">
+                            <ul class="space-y-3">
+                                <li class="flex gap-3 items-start"><i class="fa-solid fa-bullseye text-yellow-500 mt-1"></i><div class="text-xs text-gray-400">Triển khai dự án thực tế của cá nhân/doanh nghiệp.</div></li>
+                                <li class="flex gap-3 items-start"><i class="fa-solid fa-user-gear text-yellow-500 mt-1"></i><div class="text-xs text-gray-400">Coaching 1:1, Review Code, Debug hàng tuần.</div></li>
+                                <li class="flex gap-3 items-start"><i class="fa-solid fa-graduation-cap text-yellow-500 mt-1"></i><div class="text-xs text-gray-400">Tốt nghiệp: Giải quyết ít nhất 3 bài toán lớn.</div></li>
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- PHASE 2 -->
+                <div class="mb-12 flex flex-col items-center justify-center w-full" data-aos="zoom-in">
+                    <div class="bg-white/5 border border-white/10 text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider backdrop-blur-md z-30 shadow-lg flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-arrow-down text-purple-500"></i> Chuyển Sang Chặng 2 (Business OS) <i class="fa-solid fa-arrow-down text-purple-500"></i>
+                    </div>
+                     <p class="text-gray-500 text-xs uppercase">Dành cho Business Owner, Quản lý</p>
+                </div>
+
+                <!-- THÁNG 4-5 -->
+                <div class="mb-8 flex justify-between flex-row-reverse items-start w-full left-timeline group" data-aos="fade-right">
+                    <div class="order-1 w-1/12 md:w-5/12 hidden md:block"></div>
+                    <div class="z-20 flex items-center order-1 bg-purple-600 shadow-xl w-10 h-10 rounded-full border-4 border-[#0a0a0a] md:mr-0 ml-1 mt-6 transition-transform group-hover:scale-125"></div>
+                    <details class="order-1 bg-brandCard border border-white/10 rounded-xl shadow-xl w-full md:w-5/12 ml-6 md:mr-0 overflow-hidden cursor-pointer group-open:border-purple-500 transition-all duration-300 hover:border-white/30">
+                        <summary class="flex justify-between items-center p-6 bg-white/5 hover:bg-white/10 transition">
+                            <div>
+                                <span class="text-purple-500 text-xs font-bold uppercase tracking-wider mb-1 block">Tháng 4 & 5</span>
+                                <h3 class="font-bold text-white text-lg md:text-xl">Xây Dựng Business OS</h3>
+                                <p class="text-gray-500 text-xs mt-1 italic">Số hóa toàn bộ "Hậu cần" doanh nghiệp</p>
+                            </div>
+                            <span class="w-8 h-8 flex items-center justify-center rounded-full bg-black/50 border border-white/10 group-open:rotate-180 transition duration-300"><i class="fa-solid fa-chevron-down text-white"></i></span>
+                        </summary>
+                        <div class="p-6 border-t border-white/10 bg-black/40 text-sm text-gray-300 space-y-4">
+                            <div class="grid grid-cols-1 gap-4">
+                                <div><h4 class="text-white font-bold mb-1 text-xs"><i class="fa-solid fa-users text-purple-500 mr-2"></i>CRM & Khách hàng</h4><p class="text-xs text-gray-400 ml-6">Build CRM trên Lark/Sheet + GAS. Quản lý Lead -> Deal -> Won.</p></div>
+                                <div><h4 class="text-white font-bold mb-1 text-xs"><i class="fa-solid fa-id-card text-purple-500 mr-2"></i>HR & Nhân sự</h4><p class="text-xs text-gray-400 ml-6">Chấm công, tính lương, Hợp đồng tự động.</p></div>
+                                <div><h4 class="text-white font-bold mb-1 text-xs"><i class="fa-solid fa-chart-pie text-purple-500 mr-2"></i>Tài chính & Báo cáo</h4><p class="text-xs text-gray-400 ml-6">Thu/Chi/Lợi nhuận Realtime. Dashboard hiệu suất.</p></div>
+                                <div><h4 class="text-white font-bold mb-1 text-xs"><i class="fa-solid fa-school text-purple-500 mr-2"></i>LMS & Đào tạo</h4><p class="text-xs text-gray-400 ml-6">Xây dựng hệ thống đào tạo nội bộ.</p></div>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+
+                <!-- THÁNG 6 -->
+                <div class="mb-8 flex justify-between items-start w-full right-timeline group" data-aos="fade-left">
+                    <div class="order-1 w-1/12 md:w-5/12 hidden md:block"></div>
+                    <div class="z-20 flex items-center order-1 bg-pink-500 shadow-xl w-10 h-10 rounded-full border-4 border-[#0a0a0a] md:ml-0 ml-1 mt-6 transition-transform group-hover:scale-125"></div>
+                    <details class="order-1 bg-brandCard border border-white/10 rounded-xl shadow-xl w-full md:w-5/12 ml-6 md:ml-0 overflow-hidden cursor-pointer group-open:border-pink-500 transition-all duration-300 hover:border-white/30">
+                        <summary class="flex justify-between items-center p-6 bg-white/5 hover:bg-white/10 transition">
+                            <div>
+                                <span class="text-pink-500 text-xs font-bold uppercase tracking-wider mb-1 block">Tháng 6</span>
+                                <h3 class="font-bold text-white text-lg md:text-xl">Chuyển Giao & Tốt Nghiệp</h3>
+                                <p class="text-gray-500 text-xs mt-1 italic">Sở hữu trọn bộ hệ thống</p>
+                            </div>
+                            <span class="w-8 h-8 flex items-center justify-center rounded-full bg-black/50 border border-white/10 group-open:rotate-180 transition duration-300"><i class="fa-solid fa-chevron-down text-white"></i></span>
+                        </summary>
+                        <div class="p-6 border-t border-white/10 bg-black/40 text-sm text-gray-300 space-y-4">
+                            <div class="bg-pink-500/10 p-4 rounded border border-pink-500/30">
+                                <h4 class="text-white font-bold mb-2 text-xs"><i class="fa-solid fa-gift text-pink-500 mr-2"></i>Quyền lợi:</h4>
+                                <p class="text-xs text-gray-300">Sở hữu trọn bộ <strong>Source Code</strong> (CRM, HR, Finance...) để tự quản lý hoặc kinh doanh dịch vụ (Trị giá hàng trăm triệu).</p>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i class="fa-solid fa-handshake text-blue-400 text-xl"></i>
+                                <p class="text-xs text-gray-300">Cơ hội gia nhập team <strong>iAction</strong> triển khai dự án.</p>
+                            </div>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- CASE STUDY -->
+    <section id="case-study" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-black text-center mb-4 uppercase text-white">Kết Quả <span class="text-brandRed">Thực Tế</span></h2>
+            <p class="text-center text-gray-400 mb-16 text-sm">Minh chứng "Before - After" rõ ràng từ dự án thật</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                
+                <!-- Case 1: Auto Posting -->
+                <div class="bg-[#1a1a1a] p-6 rounded-2xl border border-white/5 hover:border-blue-500/50 transition group flex flex-col" data-aos="flip-up">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold shadow-[0_0_15px_rgba(37,99,235,0.5)]">1</div>
+                        <div>
+                            <h4 class="font-bold text-white">Auto Đăng bài đa kênh</h4>
+                            <p class="text-xs text-gray-400">FB, Tiktok, Youtube</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Ảnh Case Study -->
+                    <div class="w-full h-48 mb-4 overflow-hidden rounded-lg border border-white/10 relative">
+                        <!-- THAY LINK ẢNH CỦA BẠN VÀO DƯỚI ĐÂY -->
+                        <img src="https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=1000&auto=format&fit=crop" 
+                             alt="Hệ thống đăng bài tự động" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
+                            <span class="text-xs text-white font-bold bg-blue-600 px-2 py-1 rounded">Automation Flow</span>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center bg-black/50 p-4 rounded-lg mb-4 border border-white/5">
+                        <div class="text-center">
+                            <p class="text-xs text-gray-500 uppercase">Trước</p>
+                            <p class="text-red-500 font-bold text-xl">1 Tiếng</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-gray-600"></i>
+                        <div class="text-center">
+                            <p class="text-xs text-gray-500 uppercase">Sau</p>
+                            <p class="text-green-500 font-bold text-xl">15 Phút</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-auto">Chỉ cần 1 Click để lên lịch & đăng bài toàn bộ kênh. Nhân sự không cần truy cập từng nền tảng.</p>
+                </div>
+
+                <!-- Case 2: Content Viral -->
+                <div class="bg-[#1a1a1a] p-6 rounded-2xl border border-white/5 hover:border-purple-500/50 transition group flex flex-col" data-aos="flip-up" data-aos-delay="100">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold shadow-[0_0_15px_rgba(147,51,234,0.5)]">2</div>
+                        <div>
+                            <h4 class="font-bold text-white">App Content Viral</h4>
+                            <p class="text-xs text-gray-400">Content Creation</p>
+                        </div>
+                    </div>
+
+                    <!-- Ảnh Case Study -->
+                    <div class="w-full h-48 mb-4 overflow-hidden rounded-lg border border-white/10 relative">
+                        <!-- THAY LINK ẢNH CỦA BẠN VÀO DƯỚI ĐÂY -->
+                        <img src="https://images.unsplash.com/photo-1611162618071-b39a2ec055fb?q=80&w=1000&auto=format&fit=crop" 
+                             alt="Thống kê view tiktok" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
+                            <span class="text-xs text-white font-bold bg-purple-600 px-2 py-1 rounded">View Growth</span>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center bg-black/50 p-4 rounded-lg mb-4 border border-white/5">
+                        <div class="text-center">
+                            <p class="text-xs text-gray-500 uppercase">Trước</p>
+                            <p class="text-red-500 font-bold text-xl">2 Tiếng</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-gray-600"></i>
+                        <div class="text-center">
+                            <p class="text-xs text-gray-500 uppercase">Sau</p>
+                            <p class="text-green-500 font-bold text-xl">5 Phút</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-auto">Tạo content chuẩn phong cách cá nhân. Đạt <strong>>800.000 view</strong> trong 1 tháng sử dụng.</p>
+                </div>
+
+                <!-- Case 3: Landing Page -->
+                <div class="bg-[#1a1a1a] p-6 rounded-2xl border border-white/5 hover:border-green-500/50 transition group flex flex-col" data-aos="flip-up" data-aos-delay="200">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold shadow-[0_0_15px_rgba(22,163,74,0.5)]">3</div>
+                        <div>
+                            <h4 class="font-bold text-white">Landing Page AI</h4>
+                            <p class="text-xs text-gray-400">Web Development</p>
+                        </div>
+                    </div>
+
+                    <!-- Ảnh Case Study -->
+                    <div class="w-full h-48 mb-4 overflow-hidden rounded-lg border border-white/10 relative">
+                        <!-- THAY LINK ẢNH CỦA BẠN VÀO DƯỚI ĐÂY -->
+                        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1000&auto=format&fit=crop" 
+                             alt="Giao diện Website" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
+                            <span class="text-xs text-white font-bold bg-green-600 px-2 py-1 rounded">Web Builder</span>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center bg-black/50 p-4 rounded-lg mb-4 border border-white/5">
+                        <div class="text-center">
+                            <p class="text-xs text-gray-500 uppercase">Trước</p>
+                            <p class="text-red-500 font-bold text-xl">1 Ngày</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-gray-600"></i>
+                        <div class="text-center">
+                            <p class="text-xs text-gray-500 uppercase">Sau</p>
+                            <p class="text-green-500 font-bold text-xl">30 Phút</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-auto">Tốc độ thực thi nhanh gấp đôi đối thủ. 1 mình setup toàn bộ khâu trong 4 tiếng thay vì vài ngày.</p>
+                </div>
+
+                <!-- Case 4: Payroll -->
+                <div class="bg-[#1a1a1a] p-6 rounded-2xl border border-white/5 hover:border-brandRed transition group flex flex-col" data-aos="flip-up" data-aos-delay="300">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-brandRed rounded-full flex items-center justify-center text-white font-bold shadow-[0_0_15px_rgba(220,38,38,0.5)]">4</div>
+                        <div>
+                            <h4 class="font-bold text-white">Tính Lương (Payroll)</h4>
+                            <p class="text-xs text-gray-400">HR System</p>
+                        </div>
+                    </div>
+
+                    <!-- Ảnh Case Study -->
+                    <div class="w-full h-48 mb-4 overflow-hidden rounded-lg border border-white/10 relative">
+                        <!-- THAY LINK ẢNH CỦA BẠN VÀO DƯỚI ĐÂY -->
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1000&auto=format&fit=crop" 
+                             alt="Bảng tính lương" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-4">
+                            <span class="text-xs text-white font-bold bg-red-600 px-2 py-1 rounded">GG Sheet System</span>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center bg-black/50 p-4 rounded-lg mb-4 border border-white/5">
+                        <div class="text-center">
+                            <p class="text-xs text-gray-500 uppercase">Trước</p>
+                            <p class="text-red-500 font-bold text-xl">3 Ngày</p>
+                        </div>
+                        <i class="fa-solid fa-arrow-right text-gray-600"></i>
+                        <div class="text-center">
+                            <p class="text-xs text-gray-500 uppercase">Sau</p>
+                            <p class="text-green-500 font-bold text-xl">1 Tiếng</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-auto">Xác nhận lương, điều chỉnh sai sót cho toàn bộ nhân sự tự động. Tiết kiệm chi phí kế toán.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section id="pricing" class="py-24 bg-[#0a0a0a] relative overflow-hidden">
+        <div class="blob left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-brandRed w-[800px] h-[800px] opacity-10"></div>
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black text-white uppercase">Học Phí & Quyền Lợi</h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto items-start">
+                <!-- Gói 1 -->
+                <div class="bg-brandCard rounded-2xl p-8 border border-white/10 hover:border-white transition flex flex-col relative" data-aos="fade-up">
+                    <h3 class="text-xl font-black text-white mb-2 uppercase">Gói Marketer</h3>
+                    <p class="text-gray-400 text-xs mb-6 h-10">Dành cho Marketer, Freelancer.</p>
+                    <div class="text-4xl font-black text-white mb-2">30 Triệu</div>
+                    <span class="text-xs bg-white/10 text-white px-2 py-1 rounded w-fit mb-8">3 Tháng (24 buổi)</span>
+                    <ul class="text-sm text-gray-400 space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brandRed mt-1 mr-2"></i> Học hết Chặng 1.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brandRed mt-1 mr-2"></i> Template Code Marketing.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brandRed mt-1 mr-2"></i> Cộng đồng trọn đời.</li>
+                    </ul>
+                    <a href="#register" class="w-full py-3 border border-white text-white rounded-lg font-bold text-center hover:bg-white hover:text-black transition">ĐĂNG KÝ</a>
+                </div>
+                <!-- Gói 2 -->
+                <div class="bg-gradient-to-b from-brandRed to-[#3f0909] rounded-2xl p-8 border border-red-500 transform md:-translate-y-6 shadow-2xl shadow-red-900/50 flex flex-col relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 right-0 bg-white text-brandRed text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-xl">BEST CHOICE</div>
+                    <h3 class="text-xl font-black text-white mb-2 uppercase">Business Master</h3>
+                    <p class="text-red-100 text-xs mb-6 h-10">Dành cho Business Owner, Quản lý.</p>
+                    <div class="text-4xl font-black text-white mb-2">70 Triệu</div>
+                    <span class="text-xs bg-black/20 text-white px-2 py-1 rounded w-fit mb-8">6 Tháng (48 buổi)</span>
+                    <ul class="text-sm text-white space-y-4 mb-8 flex-grow font-medium">
+                        <li class="flex items-start"><i class="fa-solid fa-star text-yellow-300 mt-1 mr-2"></i> <strong>Full Lộ Trình (Chặng 1 + 2).</strong></li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-white mt-1 mr-2"></i> <strong>Full Source Code:</strong> CRM, HR, LMS...</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-white mt-1 mr-2"></i> <strong>Coaching 1-1</strong> trực tiếp.</li>
+                    </ul>
+                    <a href="#register" class="w-full py-3 bg-white text-brandRed rounded-lg font-black text-center hover:bg-gray-100 transition shadow-lg">ĐĂNG KÝ NGAY</a>
+                </div>
+                <!-- Gói 3 -->
+                <div class="bg-brandCard rounded-2xl p-8 border border-white/10 hover:border-white transition flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-black text-white mb-2 uppercase">Customization</h3>
+                    <p class="text-gray-400 text-xs mb-6 h-10">Tùy chỉnh module theo nhu cầu.</p>
+                    <div class="text-4xl font-black text-white mb-2">40-90 Triệu</div>
+                    <span class="text-xs bg-white/10 text-white px-2 py-1 rounded w-fit mb-8">3 - 6 Tháng</span>
+                    <ul class="text-sm text-gray-400 space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brandRed mt-1 mr-2"></i> Thiết kế lộ trình riêng.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-brandRed mt-1 mr-2"></i> Giải quyết vấn đề cụ thể.</li>
+                    </ul>
+                    <a href="#register" class="w-full py-3 border border-white text-white rounded-lg font-bold text-center hover:bg-white hover:text-black transition">LIÊN HỆ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMMITMENT & FAQ -->
+    <section class="py-20 bg-black border-t border-white/10">
+        <div class="max-w-5xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold text-white mb-10 uppercase">Cam Kết</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div><i class="fa-solid fa-rotate-left text-3xl text-brandRed mb-4"></i><h4 class="font-bold text-white mb-2">Hoàn Tiền</h4><p class="text-gray-500 text-sm">Làm đúng hướng dẫn mà không ra kết quả -> Hoàn tiền.</p></div>
+                <div><i class="fa-solid fa-infinity text-3xl text-brandRed mb-4"></i><h4 class="font-bold text-white mb-2">Update Trọn Đời</h4><p class="text-gray-500 text-sm">Cập nhật kiến thức, template mới miễn phí.</p></div>
+                <div><i class="fa-solid fa-users-viewfinder text-3xl text-brandRed mb-4"></i><h4 class="font-bold text-white mb-2">Cộng Đồng Chất</h4><p class="text-gray-500 text-sm">Kết nối với Marketer giỏi & Chủ doanh nghiệp.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REGISTER FORM -->
+    <section id="register" class="py-24 bg-black relative">
+        <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 z-0"></div>
+        <div class="max-w-4xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-3xl md:text-5xl font-black mb-4 text-white uppercase">Đừng để bị bỏ lại</h2>
+            <p class="text-gray-400 mb-12">Để lại thông tin để tôi tư vấn lộ trình phù hợp nhất cho bạn.</p>
+
+            <div class="bg-[#0f0f0f] p-8 md:p-12 rounded-3xl border border-white/10 shadow-2xl text-left backdrop-blur-xl">
+                <h3 class="text-2xl font-black text-white mb-8 text-center uppercase tracking-wide">Đăng Ký Tư Vấn</h3>
+                
+                <form id="class-registration-form" class="space-y-6">
+                    <!-- Input ẩn để xác định Sheet cần lưu -->
+                    <input type="hidden" name="sheet_name" value="Truyền Nghề">
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gray-500 text-xs font-bold mb-2 uppercase tracking-wider">Họ tên</label>
+                            <input name="ho_ten" required type="text" class="w-full bg-black border border-white/10 rounded-lg p-4 text-white focus:border-brandRed focus:outline-none transition" placeholder="Nhập họ tên...">
+                        </div>
+                        <div>
+                            <label class="block text-gray-500 text-xs font-bold mb-2 uppercase tracking-wider">Số điện thoại</label>
+                            <input name="so_dien_thoai" required type="text" class="w-full bg-black border border-white/10 rounded-lg p-4 text-white focus:border-brandRed focus:outline-none transition" placeholder="Nhập SĐT (Zalo)...">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-gray-500 text-xs font-bold mb-2 uppercase tracking-wider">Email</label>
+                        <input name="email" required type="email" class="w-full bg-black border border-white/10 rounded-lg p-4 text-white focus:border-brandRed focus:outline-none transition" placeholder="Nhập Email...">
+                    </div>
+                    <div>
+                        <label class="block text-gray-500 text-xs font-bold mb-2 uppercase tracking-wider">Bạn quan tâm gói nào?</label>
+                        <select name="goi_hoc" class="w-full bg-black border border-white/10 rounded-lg p-4 text-white focus:border-brandRed focus:outline-none transition">
+                            <option value="Gói Marketer (30tr)">Gói Marketer - 30 Triệu</option>
+                            <option value="Gói Business (70tr)">Gói Business Master - 70 Triệu</option>
+                            <option value="Gói Custom">Gói Custom (40-90 Triệu)</option>
+                        </select>
+                    </div>
+                    <button type="submit" id="btn-submit-class" class="w-full py-4 bg-brandRed rounded-lg text-white font-black text-xl hover:bg-red-700 transition shadow-[0_10px_20px_rgba(220,38,38,0.3)] uppercase tracking-wide flex justify-center items-center">
+                        <span>Gửi Đăng Ký</span>
+                        <i class="fa-solid fa-spinner fa-spin ml-2 hidden" id="loading-icon-class"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-10 border-t border-white/10 text-center text-gray-600 text-xs font-bold uppercase tracking-widest">
+        <p>&copy; 2024 AI Automation Master. Training by Thiet Giap</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true, offset: 100 });
+
+        // --- CẤU HÌNH LIÊN KẾT SHEET ---
+        // Thay link bên dưới bằng Link Web App Script bạn đã deploy
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbykUrFlpmc-K7VE8R8mwMPTSS9vNQvmWwVHwKB3TpXTIeMUcretjklUcfimXwVLYKHL7g/exec"; 
+
+        const formClass = document.getElementById('class-registration-form');
+        const btnSubmitClass = document.getElementById('btn-submit-class');
+        const btnTextClass = btnSubmitClass.querySelector('span');
+        const loadingIconClass = document.getElementById('loading-icon-class');
+
+        formClass.addEventListener('submit', e => {
+            e.preventDefault();
+            if(SCRIPT_URL.includes("DÁN_URL")) {
+                alert("Lỗi: Bạn chưa dán Link Web App vào code HTML!");
+                return;
+            }
+
+            // Hiệu ứng loading
+            btnSubmitClass.disabled = true;
+            btnSubmitClass.classList.add('opacity-70', 'cursor-not-allowed');
+            btnTextClass.textContent = 'Đang gửi...';
+            loadingIconClass.classList.remove('hidden');
+
+            const formData = new FormData(formClass);
+            
+            // Gửi dữ liệu sang Google Sheet
+            fetch(SCRIPT_URL, { method: 'POST', body: formData })
+                .then(response => {
+                    // Vì Google Script trả về Redirect khi dùng POST, fetch có thể không đọc được JSON chi tiết nếu bị CORS.
+                    // Tuy nhiên, nếu nó chạy vào .then() nghĩa là request đã đi.
+                    alert('✅ Đăng ký thành công! Đội ngũ sẽ liên hệ tư vấn lộ trình cho bạn.');
+                    formClass.reset();
+                })
+                .catch(error => {
+                    // Trường hợp lỗi mạng thực sự
+                    console.error('Error!', error.message);
+                    alert('⚠️ Có lỗi kết nối, nhưng có thể dữ liệu đã được gửi. Hãy thử lại hoặc nhắn tin Zalo.');
+                })
+                .finally(() => {
+                    // Reset nút bấm
+                    btnSubmitClass.disabled = false;
+                    btnSubmitClass.classList.remove('opacity-70', 'cursor-not-allowed');
+                    btnTextClass.textContent = 'Gửi Đăng Ký';
+                    loadingIconClass.classList.add('hidden');
+                });
+        });
+    </script>
+</body>
+</html>
